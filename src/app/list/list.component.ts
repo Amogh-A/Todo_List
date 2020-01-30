@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TASK} from '/home/Amogh/Documents/Training/AJS/assignment/todo-list/src/app/task'
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  todo_list:TASK[];
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
