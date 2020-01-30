@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {EventEmitterService} from '/home/Amogh/Documents/Training/AJS/assignment/todo-list/src/app/event-emitter.service';
 import {TASK} from '/home/Amogh/Documents/Training/AJS/assignment/todo-list/src/app/task'
+
 
 @Component({
   selector: 'app-list',
@@ -7,14 +9,42 @@ import {TASK} from '/home/Amogh/Documents/Training/AJS/assignment/todo-list/src/
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  count:number=1;
   todo_list:TASK[];
   todoTitle: string;
+  //str:string;
 
-  constructor() { }
+  constructor(private eventEmitterService: EventEmitterService) { }
 
   ngOnInit() {
     this.todo_list=[];
     this.todoTitle='';
+
+    if (this.eventEmitterService.subsVar==undefined) {    
+      this.eventEmitterService.subsVar = this.eventEmitterService.    
+      invokeFirstComponentFunction.subscribe((name:string)=>this.FirstFunction(name));    
+    } 
+
+  }
+ 
+
+  
+  FirstFunction(str:string)
+  {
+    if(str.trim().length===0)
+    {
+      return;
+    }
+
+    this.todo_list.push(
+      {
+        id:this.count++,
+        name:str,
+        completed:false,
+        editing:false
+      }
+    )
+    str='';
   }
 
 }

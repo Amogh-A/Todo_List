@@ -1,4 +1,6 @@
 <p>input works!</p>
 <div>
-    <input type="text" placeholder="Write a task" [(ngModel)]="todoTitle">
+    <input type="text" value="Reset" placeholder="Write a task" [(ngModel)]="todoTitle">
+    <br>
+    <input type="button" value="Call Function" (click)="invokeFirstComponentFunction(todoTitle)">
 </div>
