@@ -1,5 +1,13 @@
-<p>list works!</p>
 <div *ngFor="let todo of todo_list">
-    <div>{{todo.id}}{{todo.name}}</div>
+    <div class = disp (dblclick)="editTodo(todo)">
+        <input type="checkbox" [(ngModel)]="todo.completed" [ngClass]="{'completed':todo.completed}">
+        <div class="ngtemp" *ngIf="!todo.editing; else editingTodo" >{{todo.name}}</div>
+        <ng-template  #editingTodo>
+        <input type="text" [(ngModel)]="todo.name" autofocus (blur)="doneEdit(todo)" (keyup.enter)="doneEdit(todo)">
+        </ng-template>
+        <div class="btn" style="position: absolute; right: 0;">
+        <input   type="button" style="border: none;color: red;background-color: blanchedalmond;" value="remove" class="remove-item" (click)="deleteTodo(todo.id)">
+        </div>
+    </div>
 
 </div>

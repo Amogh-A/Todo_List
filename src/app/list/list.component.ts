@@ -47,4 +47,20 @@ export class ListComponent implements OnInit {
     str='';
   }
 
+  deleteTodo(id:number):void
+  {
+    this.todo_list = this.todo_list.filter(todo => todo.id !== id);
+  }
+
+  editTodo(todo):void
+  {
+    todo.editing=true;
+  }
+
+  doneEdit(todo):void
+  {
+    todo.editing=false;
+  }
+
+
 }
